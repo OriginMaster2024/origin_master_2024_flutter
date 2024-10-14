@@ -1,0 +1,51 @@
+name: CI
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize]
+
+env:
+  JAVA_VERSION: "17"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Setup flutter info
+        id: flutter_info
+        run: |
+          flutter_info=$(grep 'flutter' .tool-versions)
+          echo "version=$(echo ${flutter_info} | sed -r 's/^flutter ([a-z0-9\.\+\-]+)\-(stable|beta|dev)$/\1/')" >> $GITHUB_OUTPUT
+          echo "channel=$(echo ${flutter_info} | sed -r 's/^flutter ([a-z0-9\.\+\-]+)\-(stable|beta|dev)$/\2/')" >> $GITHUB_OUTPUT
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.24.3
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
