@@ -1,0 +1,16 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/gen/**
+    - lib/generated_plugin_registrant.dart
+    - "scripts/*.dart"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  language:
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    - require_trailing_commas
