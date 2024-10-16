@@ -24,10 +24,14 @@ class CounterPage extends HookConsumerWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(counterProvider.notifier).increment(),
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: incrementButton(context, ref),
+    );
+  }
+
+  Widget incrementButton(BuildContext context, WidgetRef ref) {
+    return FloatingActionButton(
+      onPressed: () => ref.read(counterProvider.notifier).increment(),
+      child: const Icon(Icons.add),
     );
   }
 }
