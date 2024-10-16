@@ -44,7 +44,7 @@ class CounterPage extends HookConsumerWidget {
 
   Widget decrementButton(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
-      onPressed: () => ref.read(counterProvider.notifier).increment(),
+      onPressed: () => ref.read(counterProvider.notifier).decrement(),
       child: const Icon(Icons.remove),
     );
   }
