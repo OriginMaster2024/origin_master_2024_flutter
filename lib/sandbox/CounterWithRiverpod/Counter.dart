@@ -8,4 +8,6 @@ class Counter extends StateNotifier<int> {
   void increment() => state++;
 
   void decrement() => state--;
+
+  void reset() => state = 0;
 }
