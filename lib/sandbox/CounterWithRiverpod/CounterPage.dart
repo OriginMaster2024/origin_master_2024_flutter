@@ -29,7 +29,9 @@ class CounterPage extends HookConsumerWidget {
         children: [
           incrementButton(context, ref),
           const SizedBox(height: 16,),
-          decrementButton(context, ref)
+          decrementButton(context, ref),
+          const SizedBox(height: 16,),
+          resetButton(context, ref),
         ],
       ),
     );
@@ -46,6 +48,13 @@ class CounterPage extends HookConsumerWidget {
     return FloatingActionButton(
       onPressed: () => ref.read(counterProvider.notifier).decrement(),
       child: const Icon(Icons.remove),
+    );
+  }
+
+  Widget resetButton(BuildContext context, WidgetRef ref) {
+    return FloatingActionButton(
+      onPressed: () => ref.read(counterProvider.notifier).reset(),
+      child: const Icon(Icons.undo),
     );
   }
 }
