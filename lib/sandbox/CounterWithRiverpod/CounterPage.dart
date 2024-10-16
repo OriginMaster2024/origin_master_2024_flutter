@@ -24,7 +24,14 @@ class CounterPage extends HookConsumerWidget {
           },
         ),
       ),
-      floatingActionButton: incrementButton(context, ref),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          incrementButton(context, ref),
+          const SizedBox(height: 16,),
+          decrementButton(context, ref)
+        ],
+      ),
     );
   }
 
