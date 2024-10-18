@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:origin_master_2024_flutter/sandbox/CounterWithRiverpod/CounterPage.dart';
+import 'package:origin_master_2024_flutter/sandbox/CounterWithRiverpod/counter_page.dart';
 
 void main() {
   runApp(
