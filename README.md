@@ -7,7 +7,7 @@
   ```bash
   brew install asdf
   echo -e "\n. \"$(brew --prefix asdf)/libexec/asdf.sh\"" >> ~/.zshrc
+  source ~/.zshrc
   asdf plugin add flutter
-  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
   asdf install
   ```
