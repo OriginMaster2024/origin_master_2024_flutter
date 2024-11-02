@@ -12,6 +12,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   hooks_riverpod: ^2.5.4
   google_fonts: ^6.2.1
+  sensors_plus: ^6.1.0
+  flutter_hooks: ^0.20.5
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:

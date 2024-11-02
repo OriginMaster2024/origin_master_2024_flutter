@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:origin_master_2024_flutter/sandbox/CounterWithRiverpod/counter_page.dart';
+import 'package:origin_master_2024_flutter/page/etude_page.dart';
 
 void main() {
   runApp(
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const CounterPage(),
+      home: const EtudePage(),
     );
   }
 }
