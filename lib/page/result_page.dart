@@ -48,7 +48,7 @@ class ResultPage extends StatelessWidget {
                                 Text("あなたの性格タイプは..."),
                               ],
                             ),
-                          )
+                          ),
                       ),
                     ],
                   ),
