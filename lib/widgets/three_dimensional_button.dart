@@ -29,42 +29,49 @@ class _ThreeDimensionalButtonState extends State<ThreeDimensionalButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) {
-        HapticFeedback.mediumImpact();
-        setState(() {
-          isHighlighted = true;
-        });
-      },
-      onTapCancel: () {
-        setState(() {
-          isHighlighted = false;
-        });
-      },
-      onTapUp: (_) {
-        setState(() {
-          isHighlighted = false;
-        });
-      },
-      onTap: () {
-        widget.onPressed?.call();
-      },
-      child: Padding(
-        padding: EdgeInsets.only(top: topPadding, bottom: bottomPadding),
-        child: Container(
-          decoration: BoxDecoration(
-            color: widget.backgroundColor,
-            border: Border.all(width: 2, color: widget.shadowColor),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              BoxShadow(
-                color: widget.shadowColor,
-                offset: Offset(0, shadowOffsetY),
-                blurRadius: 0,
-                spreadRadius: 0,
-              ),
-            ],
+      onTapDown: widget.onPressed != null
+          ? (_) {
+              HapticFeedback.mediumImpact();
+              setState(() {
+                isHighlighted = true;
+              });
+            }
+          : null,
+      onTapCancel: widget.onPressed != null
+          ? () {
+              setState(() {
+                isHighlighted = false;
+              });
+            }
+          : null,
+      onTapUp: widget.onPressed != null
+          ? (_) {
+              setState(() {
+                isHighlighted = false;
+              });
+            }
+          : null,
+      onTap: widget.onPressed?.call,
+      child: Opacity(
+        opacity: widget.onPressed != null ? 1 : 0.5,
+        child: Padding(
+          padding: EdgeInsets.only(top: topPadding, bottom: bottomPadding),
+          child: Container(
+            decoration: BoxDecoration(
+              color: widget.backgroundColor,
+              border: Border.all(width: 2, color: widget.shadowColor),
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: widget.shadowColor,
+                  offset: Offset(0, shadowOffsetY),
+                  blurRadius: 0,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: widget.child,
           ),
-          child: widget.child,
         ),
       ),
     );
