@@ -42,16 +42,13 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 64),
-                child: ActionButton(
-                  onPressed: () {
-                    Navigator.popUntil(context, (route) => route.isFirst);
-                  },
-                  title: "おわる",
-                ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 64),
+              child: ActionButton(
+                onPressed: () {
+                  Navigator.popUntil(context, (route) => route.isFirst);
+                },
+                title: "おわる",
               ),
             )
           ],
