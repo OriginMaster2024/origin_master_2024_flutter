@@ -15,16 +15,18 @@ class ResultPage extends StatelessWidget {
           title: const Text('診断結果'),
           automaticallyImplyLeading: false,
         ),
-        body: Center(
-          child: SizedBox(
-            width: DeviceSize.width - 32,
-            child: ActionButton(
-              onPressed: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
-              },
-              title: "おわる",
-            ),
-          ),
+        body: Stack(
+          children: [
+            SizedBox(
+              width: DeviceSize.width - 32,
+              child: ActionButton(
+                onPressed: () {
+                  Navigator.popUntil(context, (route) => route.isFirst);
+                },
+                title: "おわる",
+              ),
+            )
+          ],
         ),
       ),
     );
