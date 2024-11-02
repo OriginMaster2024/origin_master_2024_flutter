@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
   final colorScheme = const ColorScheme.light(
     primary: Color(0xFFF85A2B),
-    surface: Color(0xFFFFFDF2),
+    surface: Color(0xFFFFEEC8),
   );
 
   @override
