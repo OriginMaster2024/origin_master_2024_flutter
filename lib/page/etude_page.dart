@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
-import 'package:origin_master_2024_flutter/providers/bread_provider.dart';
+import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:sensors_plus/sensors_plus.dart';
