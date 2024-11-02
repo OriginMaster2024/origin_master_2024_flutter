@@ -46,6 +46,13 @@ class SituationPage extends HookConsumerWidget {
                   ),
                 ),
               ),
+              const Gap(16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ThreeDimensionalContainer(
+                  child: situation.image,
+                ),
+              ),
               const Spacer(),
               SizedBox(
                 width: DeviceSize.width - 32,
