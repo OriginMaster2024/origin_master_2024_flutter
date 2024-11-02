@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/hot_dog_select_page.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
-import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
