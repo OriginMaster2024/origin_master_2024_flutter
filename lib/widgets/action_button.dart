@@ -15,6 +15,7 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ThreeDimensionalButton(
       onPressed: onPressed,
+      backgroundColor: Theme.of(context).primaryColor,
       child: child
     );
   }
