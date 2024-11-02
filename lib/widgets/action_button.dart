@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:origin_master_2024_flutter/widgets/three_dimensional_button.dart';
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({super.key});
+  final VoidCallback? onPressed;
+  final Widget? child;
+
+  const ActionButton({
+    super.key,
+    required this.onPressed,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ThreeDimensionalButton(
+      onPressed: onPressed,
+      child: child
+    );
   }
 }
