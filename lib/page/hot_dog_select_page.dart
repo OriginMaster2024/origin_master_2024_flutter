@@ -145,7 +145,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
           children: [
             Text(
               '$typeの種類',
-              style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+              style: AppTextStyle.bold(color: Colors.black, fontSize: 12),
             ),
             const Gap(8),
             selected.value != null
