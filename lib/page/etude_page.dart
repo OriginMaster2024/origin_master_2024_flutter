@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:origin_master_2024_flutter/domain_object/etude_result.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
 import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
@@ -34,6 +35,7 @@ class EtudePage extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
 
+    final centerPercentages = useState(<double>[]);
     final isDeviceFrontHorizontal = useState(false);
 
     final countDownCount = useState(3);
@@ -123,8 +125,13 @@ class EtudePage extends HookConsumerWidget {
         ..resume();
 
       Navigator.of(context).push(
-        MaterialPageRoute<ResultPage>(
-          builder: (context) => const ResultPage(),
+        MaterialPageRoute<void>(
+          builder: (_) => ResultPage(
+            result: isGameSucceeded.value
+                ? EtudeResult.success
+                : EtudeResult.failure,
+            centerPercentages: centerPercentages.value,
+          ),
         ),
       );
     }
@@ -151,6 +158,8 @@ class EtudePage extends HookConsumerWidget {
             } else if (bottomDiff > breadHeight / 2) {
               // 下側に半分落ちかけ
             }
+
+            // TODO: centerPercentagesの計算
           }
         });
         return subscription.cancel;
