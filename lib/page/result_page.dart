@@ -1,18 +1,30 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
+import 'package:origin_master_2024_flutter/domain_object/personality_type.dart';
+import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
-import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
 
   // TODO: 定数を置き換える
-  final personalityType = PersonalityType.leader;
+  final String result = '''
+  {
+    "type": "リーダー気質",
+    "description": "「リーダー気質」と診断されたあなたは、周囲を引きつけ、導く力を持つ人です。自信に満ち、前向きなエネルギーで人々をまとめ上げるのが得意で、積極的に行動します。決断力があり、冷静に対処するタイプです。"
+  }
+  ''';
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> json = jsonDecode(result);
+    PersonalityType personalityType = PersonalityType.fromString(json['type']);
+    String description = json['description'];
+
     return PopScope(
       // NOTE: Disable iOS swipe back & Android back button
       canPop: false,
@@ -36,19 +48,23 @@ class ResultPage extends StatelessWidget {
                         width: DeviceSize.width - 128,
                         height: DeviceSize.width - 128,
                         child: ThreeDimensionalContainer(
-                            child: personalityType.image,
+                          child: personalityType.image,
                         ),
                       ),
                       const Gap(32),
-                      const ThreeDimensionalContainer(
-                          child: Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Column(
-                              children: [
-                                Text("あなたの性格タイプは..."),
-                              ],
-                            ),
+                      ThreeDimensionalContainer(
+                        child: Container(
+                          width: DeviceSize.width - 32,
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("あなたの性格タイプは...", style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
+                              const Gap(16),
+                              Text(description, style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
+                            ],
                           ),
+                        ),
                       ),
                     ],
                   ),
@@ -69,26 +85,5 @@ class ResultPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-// TODO: Move to DomainObjects folder
-enum PersonalityType {
-  leader,
-  freeSpirited,
-  seeker,
-  revolutionary,
-  stabilityOriented,
-}
-
-extension PersonalityTypeExtension on PersonalityType {
-  Widget get image {
-    return switch (this){
-      PersonalityType.leader => Assets.png.leader.image(),
-      PersonalityType.freeSpirited => Assets.png.freeSpirited.image(),
-      PersonalityType.seeker => Assets.png.seeker.image(),
-      PersonalityType.revolutionary => Assets.png.revolutionary.image(),
-      PersonalityType.stabilityOriented => Assets.png.stabilityOriented.image(),
-    };
   }
 }
