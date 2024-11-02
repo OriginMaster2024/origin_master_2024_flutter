@@ -12,6 +12,16 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsMusicGen {
+  const $AssetsMusicGen();
+
+  /// File path: assets/music/Timeless_Journey.mp3
+  String get timelessJourney => 'assets/music/Timeless_Journey.mp3';
+
+  /// List of all assets
+  List<String> get values => [timelessJourney];
+}
+
 class $AssetsPngGen {
   const $AssetsPngGen();
 
@@ -90,6 +100,7 @@ class $AssetsSvgGen {
 class Assets {
   Assets._();
 
+  static const $AssetsMusicGen music = $AssetsMusicGen();
   static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
