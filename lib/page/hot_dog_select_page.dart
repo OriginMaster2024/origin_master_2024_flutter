@@ -125,11 +125,14 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
     Timer? timer;
 
     void startSelecting() {
+      int index = 0;
       timer = Timer.periodic(const Duration(milliseconds: 80), (timer) {
-        selected.value = options[Random().nextInt(options.length)];
+        selected.value = options[index];
+        index = (index + 1) % options.length;
       });
 
       Future.delayed(const Duration(milliseconds: 1500), () {
+        selected.value = options[Random().nextInt(options.length)];
         onSelected(selected.value!);
         timer?.cancel();
       });
