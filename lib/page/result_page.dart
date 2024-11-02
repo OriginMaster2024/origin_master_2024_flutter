@@ -21,7 +21,7 @@ class ResultPage extends StatelessWidget {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: SizedBox(
                   width: DeviceSize.width,
                   child: Column(
