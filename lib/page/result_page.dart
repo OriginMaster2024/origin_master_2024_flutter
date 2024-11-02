@@ -8,6 +8,9 @@ import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
 
+  // TODO: 定数を置き換える
+  final personalityType = PersonalityType.leader;
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
