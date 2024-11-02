@@ -64,13 +64,13 @@ enum PersonalityType {
 }
 
 extension PersonalityTypeExtension on PersonalityType {
-  String get capitalText {
+  AssetGenImage get image {
     return switch (this){
-      PersonalityType.leader => '',
-      PersonalityType.freeSpirited => '',
-      PersonalityType.seeker => '',
-      PersonalityType.revolutionary => '',
-      PersonalityType.stabilityOriented => '',
+      PersonalityType.leader => Assets.png.leader,
+      PersonalityType.freeSpirited => Assets.png.freeSpirited,
+      PersonalityType.seeker => Assets.png.seeker,
+      PersonalityType.revolutionary => Assets.png.revolutionary,
+      PersonalityType.stabilityOriented => Assets.png.stabilityOriented,
     };
   }
 }
