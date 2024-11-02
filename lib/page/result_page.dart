@@ -31,7 +31,7 @@ class ResultPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Gap(32),
+                      const Gap(32),
                       SizedBox(
                         width: DeviceSize.width - 128,
                         height: DeviceSize.width - 128,
@@ -39,13 +39,13 @@ class ResultPage extends StatelessWidget {
                             child: personalityType.image
                         ),
                       ),
-                      Gap(32),
-                      ThreeDimensionalContainer(
+                      const Gap(32),
+                      const ThreeDimensionalContainer(
                           child: Padding(
                             padding: EdgeInsets.all(16),
                             child: Column(
                               children: [
-                                Text("あなたの性格タイプは...")
+                                Text("あなたの性格タイプは..."),
                               ],
                             ),
                           )
