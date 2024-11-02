@@ -32,7 +32,7 @@ class HotDogSelectPage extends HookWidget {
                     ),
                   );
                 },
-                title: "診断をはじめる",
+                title: "次へ",
               ),
             ),
           ],
