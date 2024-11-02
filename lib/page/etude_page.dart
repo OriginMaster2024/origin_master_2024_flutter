@@ -31,7 +31,7 @@ class EtudePage extends HookConsumerWidget {
     final sausage = ref.watch(sausageProvider);
 
     if (bread == null || sausage == null) {
-      throw Exception('bread or sausage is null');
+      return const SizedBox.shrink();
     }
 
     final isDeviceFrontHorizontal = useState(false);

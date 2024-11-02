@@ -23,9 +23,6 @@ class ResultPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final breadNotifier = ref.watch(breadProvider.notifier);
-    final sausageNotifier = ref.watch(sausageProvider.notifier);
-
     Map<String, dynamic> json = jsonDecode(result);
     PersonalityType personalityType = PersonalityType.fromString(json['type']);
     String description = json['description'];
@@ -64,14 +61,26 @@ class ResultPage extends HookConsumerWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("あなたの性格タイプは...", style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
+                              Text(
+                                "あなたの性格タイプは...",
+                                style: AppTextStyle.medium(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                ),
+                              ),
                               const Gap(10),
                               SizedBox(
                                 height: 26,
                                 child: personalityType.titleImage,
                               ),
                               const Gap(10),
-                              Text(description, style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
+                              Text(
+                                description,
+                                style: AppTextStyle.medium(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -86,8 +95,9 @@ class ResultPage extends HookConsumerWidget {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 64),
               child: ActionButton(
                 onPressed: () {
-                  breadNotifier.state = null;
-                  sausageNotifier.state = null;
+                  ref
+                    ..invalidate(breadProvider)
+                    ..invalidate(sausageProvider);
                   Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 title: "おわる",
