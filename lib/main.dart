@@ -3,11 +3,19 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/page/home_page.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void main() {
-  runApp(
-    const ProviderScope(
-      child: MyApp(),
+Future<void> main() async {
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = const String.fromEnvironment("SENTRY_DSN");
+      options.tracesSampleRate = 1.0;
+      options.profilesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(
+      const ProviderScope(
+        child: MyApp(),
+      ),
     ),
   );
 }

@@ -7,6 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/domain_object/etude_result.dart';
+import 'package:origin_master_2024_flutter/exceptions/hot_dog_exception.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
 import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
@@ -118,6 +119,7 @@ class EtudePage extends HookConsumerWidget {
       gameTimer.value?.cancel();
       gameTimer.value = null;
       isGameFailed.value = true;
+      throw const HotDogException('🌭が落ちちゃった！');
     }
 
     void showResultPage() {
