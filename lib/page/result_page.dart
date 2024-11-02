@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
+import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
@@ -50,5 +51,25 @@ class ResultPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+enum PersonalityType {
+  leader,
+  freeSpirited,
+  seeker,
+  revolutionary,
+  stabilityOriented,
+}
+
+extension PersonalityTypeExtension on PersonalityType {
+  String get capitalText {
+    return switch (this){
+      PersonalityType.leader => '',
+      PersonalityType.freeSpirited => '',
+      PersonalityType.seeker => '',
+      PersonalityType.revolutionary => '',
+      PersonalityType.stabilityOriented => '',
+    };
   }
 }
