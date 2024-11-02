@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/page/home_page.dart';
+import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 
 void main() {
   runApp(
@@ -14,6 +15,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  final colorScheme = const ColorScheme.light(
+    primary: Color(0xFFF85A2B),
+    surface: Color(0xFFFFFDF2),
+  );
+
   @override
   Widget build(BuildContext context) {
     DeviceSize.ensureInitialized(context);
@@ -21,11 +27,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: const ColorScheme.light(
-          primary: Color(0xFFF85A2B),
-          surface: Color(0xFFFFFDF2),
-        ),
+        colorScheme: colorScheme,
         useMaterial3: true,
+        appBarTheme: AppBarTheme(
+          backgroundColor: colorScheme.primary,
+          surfaceTintColor: colorScheme.primary,
+          foregroundColor: Colors.white,
+          titleTextStyle: AppTextStyle.bold(fontSize: 16),
+          shape: const Border(
+            bottom: BorderSide(color: Colors.black, width: 4),
+          ),
+        ),
       ),
       home: const HomePage(),
     );
