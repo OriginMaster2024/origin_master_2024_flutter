@@ -70,13 +70,13 @@ enum PersonalityType {
 }
 
 extension PersonalityTypeExtension on PersonalityType {
-  AssetGenImage get image {
+  Widget get image {
     return switch (this){
-      PersonalityType.leader => Assets.png.leader,
-      PersonalityType.freeSpirited => Assets.png.freeSpirited,
-      PersonalityType.seeker => Assets.png.seeker,
-      PersonalityType.revolutionary => Assets.png.revolutionary,
-      PersonalityType.stabilityOriented => Assets.png.stabilityOriented,
+      PersonalityType.leader => Assets.png.leader.image(),
+      PersonalityType.freeSpirited => Assets.png.freeSpirited.image(),
+      PersonalityType.seeker => Assets.png.seeker.image(),
+      PersonalityType.revolutionary => Assets.png.revolutionary.image(),
+      PersonalityType.stabilityOriented => Assets.png.stabilityOriented.image(),
     };
   }
 }
