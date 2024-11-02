@@ -13,20 +13,17 @@ class SituationPage extends StatelessWidget {
         title: const Text('シチュエーション'),
       ),
       body: Center(
-        child: TextButton(
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute<EtudePage>(
-                builder: (context) => const EtudePage(),
-              ),
-            );
-          },
-          child: SizedBox(
-            width: DeviceSize.width - 32,
-            child: ActionButton(
-              onPressed: () {},
-              title: "診断をはじめる",
-            ),
+        child: SizedBox(
+          width: DeviceSize.width - 32,
+          child: ActionButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<EtudePage>(
+                  builder: (context) => const EtudePage(),
+                ),
+              );
+            },
+            title: "診断をはじめる",
           ),
         ),
       ),
