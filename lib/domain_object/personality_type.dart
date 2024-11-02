@@ -19,6 +19,16 @@ enum PersonalityType {
     };
   }
 
+  Widget get titleImage {
+    return switch (this) {
+      PersonalityType.leader => Assets.png.titlePersonalityLeader.image(),
+      PersonalityType.freeSpirited => Assets.png.titlePersonalityFreeSpirited.image(),
+      PersonalityType.seeker => Assets.png.titlePersonalitySeeker.image(),
+      PersonalityType.revolutionary => Assets.png.titlePersonalityRevolutionary.image(),
+      PersonalityType.stabilityOriented => Assets.png.titlePersonalityStabilityOriented.image(),
+    };
+  }
+
   static PersonalityType fromString(String type) {
     return switch (type) {
       'リーダー気質' => PersonalityType.leader,
