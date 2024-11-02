@@ -57,6 +57,38 @@ class $AssetsPngGen {
   AssetGenImage get stabilityOriented =>
       const AssetGenImage('assets/png/stability_oriented.png');
 
+  /// File path: assets/png/title_bread_brioche.png
+  AssetGenImage get titleBreadBrioche =>
+      const AssetGenImage('assets/png/title_bread_brioche.png');
+
+  /// File path: assets/png/title_bread_french.png
+  AssetGenImage get titleBreadFrench =>
+      const AssetGenImage('assets/png/title_bread_french.png');
+
+  /// File path: assets/png/title_bread_potato.png
+  AssetGenImage get titleBreadPotato =>
+      const AssetGenImage('assets/png/title_bread_potato.png');
+
+  /// File path: assets/png/title_bread_regular.png
+  AssetGenImage get titleBreadRegular =>
+      const AssetGenImage('assets/png/title_bread_regular.png');
+
+  /// File path: assets/png/title_sausage_bratwurst.png
+  AssetGenImage get titleSausageBratwurst =>
+      const AssetGenImage('assets/png/title_sausage_bratwurst.png');
+
+  /// File path: assets/png/title_sausage_chorizo.png
+  AssetGenImage get titleSausageChorizo =>
+      const AssetGenImage('assets/png/title_sausage_chorizo.png');
+
+  /// File path: assets/png/title_sausage_frankfurter.png
+  AssetGenImage get titleSausageFrankfurter =>
+      const AssetGenImage('assets/png/title_sausage_frankfurter.png');
+
+  /// File path: assets/png/title_sausage_wiener.png
+  AssetGenImage get titleSausageWiener =>
+      const AssetGenImage('assets/png/title_sausage_wiener.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         freeSpirited,
@@ -65,7 +97,15 @@ class $AssetsPngGen {
         leader,
         revolutionary,
         seeker,
-        stabilityOriented
+        stabilityOriented,
+        titleBreadBrioche,
+        titleBreadFrench,
+        titleBreadPotato,
+        titleBreadRegular,
+        titleSausageBratwurst,
+        titleSausageChorizo,
+        titleSausageFrankfurter,
+        titleSausageWiener
       ];
 }
 
@@ -79,6 +119,10 @@ class $AssetsSvgGen {
   SvgGenImage get breadBrioche =>
       const SvgGenImage('assets/svg/bread_brioche.svg');
 
+  /// File path: assets/svg/bread_french.svg
+  SvgGenImage get breadFrench =>
+      const SvgGenImage('assets/svg/bread_french.svg');
+
   /// File path: assets/svg/bread_potato.svg
   SvgGenImage get breadPotato =>
       const SvgGenImage('assets/svg/bread_potato.svg');
@@ -86,10 +130,6 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bread_regular.svg
   SvgGenImage get breadRegular =>
       const SvgGenImage('assets/svg/bread_regular.svg');
-
-  /// File path: assets/svg/bread_whole_wheat.svg
-  SvgGenImage get breadWholeWheat =>
-      const SvgGenImage('assets/svg/bread_whole_wheat.svg');
 
   /// File path: assets/svg/hotdog.svg
   SvgGenImage get hotdog => const SvgGenImage('assets/svg/hotdog.svg');
@@ -117,9 +157,9 @@ class $AssetsSvgGen {
   List<SvgGenImage> get values => [
         bread,
         breadBrioche,
+        breadFrench,
         breadPotato,
         breadRegular,
-        breadWholeWheat,
         hotdog,
         sausage,
         sausageBratwurst,

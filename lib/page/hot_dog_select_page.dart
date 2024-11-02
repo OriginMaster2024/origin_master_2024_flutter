@@ -103,10 +103,8 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                ingredient.name,
-                style: AppTextStyle.bold(color: Colors.black, fontSize: 26),
-              ),
+              ingredient.titleImage.image(height: 26),
+              const Gap(8),
               Text(
                 ingredient.description,
                 style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
@@ -148,7 +146,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
           children: [
             Text(
               '$typeの種類',
-              style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+              style: AppTextStyle.bold(color: Colors.black, fontSize: 12),
             ),
             const Gap(8),
             selected.value != null
