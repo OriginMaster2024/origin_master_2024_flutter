@@ -31,6 +31,10 @@ class $AssetsMusicGen {
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/free_spirited.png
+  AssetGenImage get freeSpirited =>
+      const AssetGenImage('assets/png/free_spirited.png');
+
   /// File path: assets/png/home_label.png
   AssetGenImage get homeLabel =>
       const AssetGenImage('assets/png/home_label.png');
@@ -39,8 +43,30 @@ class $AssetsPngGen {
   AssetGenImage get homeTopBar =>
       const AssetGenImage('assets/png/home_top_bar.png');
 
+  /// File path: assets/png/leader.png
+  AssetGenImage get leader => const AssetGenImage('assets/png/leader.png');
+
+  /// File path: assets/png/revolutionary.png
+  AssetGenImage get revolutionary =>
+      const AssetGenImage('assets/png/revolutionary.png');
+
+  /// File path: assets/png/seeker.png
+  AssetGenImage get seeker => const AssetGenImage('assets/png/seeker.png');
+
+  /// File path: assets/png/stability_oriented.png
+  AssetGenImage get stabilityOriented =>
+      const AssetGenImage('assets/png/stability_oriented.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [homeLabel, homeTopBar];
+  List<AssetGenImage> get values => [
+        freeSpirited,
+        homeLabel,
+        homeTopBar,
+        leader,
+        revolutionary,
+        seeker,
+        stabilityOriented
+      ];
 }
 
 class $AssetsSvgGen {
