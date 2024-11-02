@@ -33,14 +33,58 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bread.svg
   SvgGenImage get bread => const SvgGenImage('assets/svg/bread.svg');
 
+  /// File path: assets/svg/bread_brioche.svg
+  SvgGenImage get breadBrioche =>
+      const SvgGenImage('assets/svg/bread_brioche.svg');
+
+  /// File path: assets/svg/bread_potato.svg
+  SvgGenImage get breadPotato =>
+      const SvgGenImage('assets/svg/bread_potato.svg');
+
+  /// File path: assets/svg/bread_regular.svg
+  SvgGenImage get breadRegular =>
+      const SvgGenImage('assets/svg/bread_regular.svg');
+
+  /// File path: assets/svg/bread_whole_wheat.svg
+  SvgGenImage get breadWholeWheat =>
+      const SvgGenImage('assets/svg/bread_whole_wheat.svg');
+
   /// File path: assets/svg/hotdog.svg
   SvgGenImage get hotdog => const SvgGenImage('assets/svg/hotdog.svg');
 
   /// File path: assets/svg/sausage.svg
   SvgGenImage get sausage => const SvgGenImage('assets/svg/sausage.svg');
 
+  /// File path: assets/svg/sausage_bratwurst.svg
+  SvgGenImage get sausageBratwurst =>
+      const SvgGenImage('assets/svg/sausage_bratwurst.svg');
+
+  /// File path: assets/svg/sausage_chorizo.svg
+  SvgGenImage get sausageChorizo =>
+      const SvgGenImage('assets/svg/sausage_chorizo.svg');
+
+  /// File path: assets/svg/sausage_frankfurter.svg
+  SvgGenImage get sausageFrankfurter =>
+      const SvgGenImage('assets/svg/sausage_frankfurter.svg');
+
+  /// File path: assets/svg/sausage_wiener.svg
+  SvgGenImage get sausageWiener =>
+      const SvgGenImage('assets/svg/sausage_wiener.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [bread, hotdog, sausage];
+  List<SvgGenImage> get values => [
+        bread,
+        breadBrioche,
+        breadPotato,
+        breadRegular,
+        breadWholeWheat,
+        hotdog,
+        sausage,
+        sausageBratwurst,
+        sausageChorizo,
+        sausageFrankfurter,
+        sausageWiener
+      ];
 }
 
 class Assets {
