@@ -51,5 +51,7 @@
 	<true/>
 	<key>NSMotionUsageDescription</key>
 	<string>ホットドッグの動きを検知するためにモーションデータを使用します</string>
+	<key>UIStatusBarHidden</key>
+	<false/>
 </dict>
 </plist>
