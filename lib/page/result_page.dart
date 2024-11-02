@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
+import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
@@ -17,13 +18,32 @@ class ResultPage extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            SizedBox(
-              width: DeviceSize.width - 32,
-              child: ActionButton(
-                onPressed: () {
-                  Navigator.popUntil(context, (route) => route.isFirst);
-                },
-                title: "おわる",
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  ThreeDimensionalContainer(
+                    child: Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          Text("あなたの性格タイプは...")
+                        ],
+                      ),
+                    )
+                  )
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 64),
+                child: ActionButton(
+                  onPressed: () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+                  },
+                  title: "おわる",
+                ),
               ),
             )
           ],
