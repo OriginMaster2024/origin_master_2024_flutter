@@ -20,19 +20,22 @@ class ResultPage extends StatelessWidget {
         body: Stack(
           children: [
             SingleChildScrollView(
-              child: Column(
-                children: [
-                  ThreeDimensionalContainer(
-                    child: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Column(
-                        children: [
-                          Text("あなたの性格タイプは...")
-                        ],
-                      ),
+              child: SizedBox(
+                width: DeviceSize.width,
+                child: Column(
+                  children: [
+                    ThreeDimensionalContainer(
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Column(
+                            children: [
+                              Text("あなたの性格タイプは...")
+                            ],
+                          ),
+                        )
                     )
-                  )
-                ],
+                  ],
+                ),
               ),
             ),
             Align(
