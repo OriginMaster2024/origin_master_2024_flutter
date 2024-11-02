@@ -57,6 +57,38 @@ class $AssetsPngGen {
   AssetGenImage get stabilityOriented =>
       const AssetGenImage('assets/png/stability_oriented.png');
 
+  /// File path: assets/png/title_bread_brioche.png
+  AssetGenImage get titleBreadBrioche =>
+      const AssetGenImage('assets/png/title_bread_brioche.png');
+
+  /// File path: assets/png/title_bread_french.png
+  AssetGenImage get titleBreadFrench =>
+      const AssetGenImage('assets/png/title_bread_french.png');
+
+  /// File path: assets/png/title_bread_potato.png
+  AssetGenImage get titleBreadPotato =>
+      const AssetGenImage('assets/png/title_bread_potato.png');
+
+  /// File path: assets/png/title_bread_regular.png
+  AssetGenImage get titleBreadRegular =>
+      const AssetGenImage('assets/png/title_bread_regular.png');
+
+  /// File path: assets/png/title_sausage_bratwurst.png
+  AssetGenImage get titleSausageBratwurst =>
+      const AssetGenImage('assets/png/title_sausage_bratwurst.png');
+
+  /// File path: assets/png/title_sausage_chorizo.png
+  AssetGenImage get titleSausageChorizo =>
+      const AssetGenImage('assets/png/title_sausage_chorizo.png');
+
+  /// File path: assets/png/title_sausage_frankfurter.png
+  AssetGenImage get titleSausageFrankfurter =>
+      const AssetGenImage('assets/png/title_sausage_frankfurter.png');
+
+  /// File path: assets/png/title_sausage_wiener.png
+  AssetGenImage get titleSausageWiener =>
+      const AssetGenImage('assets/png/title_sausage_wiener.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         freeSpirited,
@@ -65,7 +97,15 @@ class $AssetsPngGen {
         leader,
         revolutionary,
         seeker,
-        stabilityOriented
+        stabilityOriented,
+        titleBreadBrioche,
+        titleBreadFrench,
+        titleBreadPotato,
+        titleBreadRegular,
+        titleSausageBratwurst,
+        titleSausageChorizo,
+        titleSausageFrankfurter,
+        titleSausageWiener
       ];
 }
 
