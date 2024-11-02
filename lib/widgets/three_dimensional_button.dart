@@ -52,17 +52,18 @@ class _ThreeDimensionalButtonState extends State<ThreeDimensionalButton> {
         padding: EdgeInsets.only(top: topPadding, bottom: bottomPadding),
         child: Container(
           decoration: BoxDecoration(
-              color: widget.backgroundColor,
-              border: Border.all(width: 2, color: widget.shadowColor),
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: widget.shadowColor,
-                  offset: Offset(0, shadowOffsetY),
-                  blurRadius: 0,
-                  spreadRadius: 0,
-                ),
-              ]),
+            color: widget.backgroundColor,
+            border: Border.all(width: 2, color: widget.shadowColor),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: widget.shadowColor,
+                offset: Offset(0, shadowOffsetY),
+                blurRadius: 0,
+                spreadRadius: 0,
+              ),
+            ],
+          ),
           child: widget.child,
         ),
       ),
