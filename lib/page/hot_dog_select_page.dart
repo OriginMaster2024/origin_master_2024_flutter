@@ -13,30 +13,35 @@ class HotDogSelectPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ホットドッグ'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const IngredientCard(type: 'パン', options: Bread.values),
-            const IngredientCard(type: 'ソーセージ', options: Sausage.values),
-            SizedBox(
-              width: DeviceSize.width - 32,
-              child: ActionButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute<SituationPage>(
-                      builder: (context) => const SituationPage(),
-                    ),
-                  );
-                },
-                title: "次へ",
+    return PopScope(
+      // NOTE: Disable iOS swipe back & Android back button
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('ホットドッグ'),
+          automaticallyImplyLeading: false,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const IngredientCard(type: 'パン', options: Bread.values),
+              const IngredientCard(type: 'ソーセージ', options: Sausage.values),
+              SizedBox(
+                width: DeviceSize.width - 32,
+                child: ActionButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute<SituationPage>(
+                        builder: (context) => const SituationPage(),
+                      ),
+                    );
+                  },
+                  title: "次へ",
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -121,16 +126,16 @@ enum Bread implements Ingredient {
 
 enum Sausage implements Ingredient {
   chorizo(
-      'チョリソー',
-      'ピリッとした辛さがあり、熟成されており、風味が濃厚です。ピリ辛の味わいがアクセントになります。',
+    'チョリソー',
+    'ピリッとした辛さがあり、熟成されており、風味が濃厚です。ピリ辛の味わいがアクセントになります。',
   ),
   bratwurst(
     'ブラートヴルスト',
     'ドイツを代表するソーセージで、マイルドでジューシーな味わいが特徴ですが、ハーブやスパイスで軽く味付けされており、食べ応えがあります。',
   ),
   frankfurter(
-      'フランクフルト',
-      'ドイツのフランクフルト発祥のソーセージで、スモークされていることが多く、肉の旨味が強調されています。',
+    'フランクフルト',
+    'ドイツのフランクフルト発祥のソーセージで、スモークされていることが多く、肉の旨味が強調されています。',
   ),
   wiener(
     'ウィンナー',

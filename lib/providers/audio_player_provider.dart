@@ -5,16 +5,22 @@ import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 final homeBGMPlayerProvider = Provider<AudioPlayer?>((ref) {
   return ref
       .watch(_audioPlayerFutureProvider(Assets.music.timelessJourney))
-      .value;
+      .value
+    ?..setReleaseMode(ReleaseMode.loop);
 });
 
 final etudeBGMPlayerProvider = Provider<AudioPlayer?>((ref) {
-  return ref.watch(_audioPlayerFutureProvider(Assets.music.run)).value;
+  return ref.watch(_audioPlayerFutureProvider(Assets.music.run)).value
+    ?..setReleaseMode(ReleaseMode.loop);
+});
+
+final coundDownSEPlayerProvider = Provider<AudioPlayer?>((ref) {
+  return ref.watch(_audioPlayerFutureProvider(Assets.music.countDown)).value;
 });
 
 final _audioPlayerFutureProvider =
     FutureProvider.family<AudioPlayer, String>((ref, path) async {
-  final player = AudioPlayer()..setReleaseMode(ReleaseMode.loop);
+  final player = AudioPlayer();
   await player.setSource(AssetSource(path.replaceFirst('assets/', '')));
 
   ref.onDispose(() {

@@ -7,16 +7,23 @@ class ResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('診断結果'),
-      ),
-      body: Center(
-        child: SizedBox(
-          width: DeviceSize.width - 32,
-          child: ActionButton(
-            onPressed: () {},
-            title: "おわる",
+    return PopScope(
+      // NOTE: Disable iOS swipe back & Android back button
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('診断結果'),
+          automaticallyImplyLeading: false,
+        ),
+        body: Center(
+          child: SizedBox(
+            width: DeviceSize.width - 32,
+            child: ActionButton(
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              title: "おわる",
+            ),
           ),
         ),
       ),
