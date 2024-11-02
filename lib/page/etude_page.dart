@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
+import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
@@ -89,7 +90,11 @@ class EtudePage extends HookConsumerWidget {
     }
 
     void showResultPage() {
-      // TODO: 診断結果ページへ遷移
+      Navigator.of(context).push(
+        MaterialPageRoute<ResultPage>(
+          builder: (context) => const ResultPage(),
+        ),
+      );
     }
 
     useEffect(
