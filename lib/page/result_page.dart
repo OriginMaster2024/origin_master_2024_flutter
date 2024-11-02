@@ -54,6 +54,7 @@ class ResultPage extends StatelessWidget {
   }
 }
 
+// TODO: Move to DomainObjects folder
 enum PersonalityType {
   leader,
   freeSpirited,
