@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:origin_master_2024_flutter/page/situation_page.dart';
+import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 
 class HotDogSelectPage extends HookWidget {
   const HotDogSelectPage({super.key});
@@ -20,7 +21,7 @@ class HotDogSelectPage extends HookWidget {
           children: [
             const IngredientCard(type: 'パン', options: Bread.values),
             const IngredientCard(type: 'ソーセージ', options: Sausage.values),
-            TextButton(
+            ActionButton(
               onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute<SituationPage>(
@@ -28,7 +29,7 @@ class HotDogSelectPage extends HookWidget {
               ),
             );
           },
-              child: const Text('診断開始'),
+              title: "診断をはじめる",
             ),
           ],
         ),
