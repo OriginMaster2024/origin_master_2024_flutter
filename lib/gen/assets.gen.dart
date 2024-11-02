@@ -79,6 +79,10 @@ class $AssetsSvgGen {
   SvgGenImage get breadBrioche =>
       const SvgGenImage('assets/svg/bread_brioche.svg');
 
+  /// File path: assets/svg/bread_french.svg
+  SvgGenImage get breadFrench =>
+      const SvgGenImage('assets/svg/bread_french.svg');
+
   /// File path: assets/svg/bread_potato.svg
   SvgGenImage get breadPotato =>
       const SvgGenImage('assets/svg/bread_potato.svg');
@@ -86,10 +90,6 @@ class $AssetsSvgGen {
   /// File path: assets/svg/bread_regular.svg
   SvgGenImage get breadRegular =>
       const SvgGenImage('assets/svg/bread_regular.svg');
-
-  /// File path: assets/svg/bread_whole_wheat.svg
-  SvgGenImage get breadWholeWheat =>
-      const SvgGenImage('assets/svg/bread_whole_wheat.svg');
 
   /// File path: assets/svg/hotdog.svg
   SvgGenImage get hotdog => const SvgGenImage('assets/svg/hotdog.svg');
@@ -117,9 +117,9 @@ class $AssetsSvgGen {
   List<SvgGenImage> get values => [
         bread,
         breadBrioche,
+        breadFrench,
         breadPotato,
         breadRegular,
-        breadWholeWheat,
         hotdog,
         sausage,
         sausageBratwurst,

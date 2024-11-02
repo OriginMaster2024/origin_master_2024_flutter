@@ -12,7 +12,7 @@ enum Bread implements Ingredient {
   regular('レギュラーロール', '基本のホットドッグ用ロールで、柔らかくて少し甘みがあるのが特徴です。'),
   potato('ポテトロール', 'ジャガイモを使って作られたロールで、柔らかくもちもちした食感があります。'),
   brioche('ブリオッシュロール', 'フランスのブリオッシュ生地を使ったパンで、バターの風味が豊かでリッチな味わいです。'),
-  wholeWheat('全粒粉ロール', 'ヘルシー志向の方に人気で、全粒粉を使っているため香ばしく、栄養価も高いです。');
+  french('フランスパンロール', 'フランスパンのような固めのロールで、クラストがしっかりとしていて、食べごたえがあります。');
 
   const Bread(this.name, this.description);
 
@@ -30,8 +30,8 @@ enum Bread implements Ingredient {
         return Assets.svg.breadPotato;
       case Bread.brioche:
         return Assets.svg.breadBrioche;
-      case Bread.wholeWheat:
-        return Assets.svg.breadWholeWheat;
+      case Bread.french:
+        return Assets.svg.breadFrench;
     }
   }
 }
