@@ -60,7 +60,12 @@ class ResultPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("あなたの性格タイプは...", style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
-                              const Gap(16),
+                              const Gap(10),
+                              SizedBox(
+                                height: 26,
+                                child: personalityType.titleImage,
+                              ),
+                              const Gap(10),
                               Text(description, style: AppTextStyle.medium(color: Colors.black, fontSize: 12)),
                             ],
                           ),
