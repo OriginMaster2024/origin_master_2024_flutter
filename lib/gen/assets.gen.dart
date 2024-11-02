@@ -53,6 +53,30 @@ class $AssetsPngGen {
   /// File path: assets/png/seeker.png
   AssetGenImage get seeker => const AssetGenImage('assets/png/seeker.png');
 
+  /// File path: assets/png/situation_boxing.png
+  AssetGenImage get situationBoxing =>
+      const AssetGenImage('assets/png/situation_boxing.png');
+
+  /// File path: assets/png/situation_dash.png
+  AssetGenImage get situationDash =>
+      const AssetGenImage('assets/png/situation_dash.png');
+
+  /// File path: assets/png/situation_election.png
+  AssetGenImage get situationElection =>
+      const AssetGenImage('assets/png/situation_election.png');
+
+  /// File path: assets/png/situation_high_five.png
+  AssetGenImage get situationHighFive =>
+      const AssetGenImage('assets/png/situation_high_five.png');
+
+  /// File path: assets/png/situation_swimming.png
+  AssetGenImage get situationSwimming =>
+      const AssetGenImage('assets/png/situation_swimming.png');
+
+  /// File path: assets/png/situation_wave.png
+  AssetGenImage get situationWave =>
+      const AssetGenImage('assets/png/situation_wave.png');
+
   /// File path: assets/png/stability_oriented.png
   AssetGenImage get stabilityOriented =>
       const AssetGenImage('assets/png/stability_oriented.png');
@@ -117,6 +141,12 @@ class $AssetsPngGen {
         leader,
         revolutionary,
         seeker,
+        situationBoxing,
+        situationDash,
+        situationElection,
+        situationHighFive,
+        situationSwimming,
+        situationWave,
         stabilityOriented,
         titleBreadBrioche,
         titleBreadFrench,
