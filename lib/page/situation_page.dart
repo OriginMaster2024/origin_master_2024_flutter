@@ -8,22 +8,27 @@ class SituationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('シチュエーション'),
-      ),
-      body: Center(
-        child: SizedBox(
-          width: DeviceSize.width - 32,
-          child: ActionButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute<EtudePage>(
-                  builder: (context) => const EtudePage(),
-                ),
-              );
-            },
-            title: "診断をはじめる",
+    return PopScope(
+      // NOTE: Disable iOS swipe back & Android back button
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('シチュエーション'),
+          automaticallyImplyLeading: false,
+        ),
+        body: Center(
+          child: SizedBox(
+            width: DeviceSize.width - 32,
+            child: ActionButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute<EtudePage>(
+                    builder: (context) => const EtudePage(),
+                  ),
+                );
+              },
+              title: "診断をはじめる",
+            ),
           ),
         ),
       ),
