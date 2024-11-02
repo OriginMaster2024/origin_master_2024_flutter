@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
+import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/etude_page.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
@@ -86,6 +87,23 @@ enum Situation {
         return '選挙に出馬し色んな人に知ってもらいたい！\n街ゆく人に挨拶をしよう！';
       case Situation.swimming:
         return '水泳大会ゴール目前！\nクロールで駆け抜けろ！！';
+    }
+  }
+
+  Widget get image {
+    switch (this) {
+      case Situation.boxing:
+        return Assets.png.situationBoxing.image();
+      case Situation.wave:
+        return Assets.png.situationWave.image();
+      case Situation.highFive:
+        return Assets.png.situationHighFive.image();
+      case Situation.dash:
+        return Assets.png.situationDash.image();
+      case Situation.election:
+        return Assets.png.situationElection.image();
+      case Situation.swimming:
+        return Assets.png.situationSwimming.image();
     }
   }
 }
