@@ -17,24 +17,28 @@ class ResultPage extends StatelessWidget {
           title: const Text('診断結果'),
           automaticallyImplyLeading: false,
         ),
-        body: Stack(
+        body: Column(
           children: [
-            SingleChildScrollView(
-              child: SizedBox(
-                width: DeviceSize.width,
-                child: Column(
-                  children: [
-                    ThreeDimensionalContainer(
-                        child: Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            children: [
-                              Text("あなたの性格タイプは...")
-                            ],
-                          ),
-                        )
-                    )
-                  ],
+            Expanded(
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: SizedBox(
+                  width: DeviceSize.width,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ThreeDimensionalContainer(
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              children: [
+                                Text("あなたの性格タイプは...")
+                              ],
+                            ),
+                          )
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
