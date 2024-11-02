@@ -8,9 +8,6 @@ import 'package:origin_master_2024_flutter/page/situation_page.dart';
 class HotDogSelectPage extends HookWidget {
   const HotDogSelectPage({super.key});
 
-  static List<Color> breads = Colors.primaries;
-  static List<Color> sausages = Colors.primaries;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +18,8 @@ class HotDogSelectPage extends HookWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const IngredientCard(type: 'パン', options: Colors.primaries),
-            const IngredientCard(type: 'ソーセージ', options: Colors.primaries),
+            const IngredientCard(type: 'パン', options: Bread.values),
+            const IngredientCard(type: 'ソーセージ', options: Sausage.values),
             TextButton(
               onPressed: () {
             Navigator.of(context).push(
@@ -44,11 +41,11 @@ class IngredientCard extends HookWidget {
   const IngredientCard({super.key, required this.type, required this.options});
 
   final String type;
-  final List<Color> options;
+  final List<Ingredient> options;
 
   @override
   Widget build(BuildContext context) {
-    final selected = useState<Color?>(null);
+    final selected = useState<Ingredient?>(null);
     Timer? timer;
 
     void startSelecting() {
@@ -61,13 +58,14 @@ class IngredientCard extends HookWidget {
       });
     }
 
-    return Container(
+    return SizedBox(
       width: 300,
       height: 150,
-      color: selected.value,
       child: Column(
         children: [
           Text('$typeの種類'),
+          Text(selected.value?.name ?? ''),
+          Text(selected.value?.description ?? ''),
           if (selected.value == null) ElevatedButton(
             onPressed: startSelecting,
             child: const Text('選択'),
@@ -76,4 +74,35 @@ class IngredientCard extends HookWidget {
       ),
     );
   }
+}
+
+abstract class Ingredient {
+  String get name;
+  String get description;
+}
+
+enum Bread implements Ingredient {
+  whiteBread('White Bread', 'A soft and fluffy white bread, perfect for sandwiches.'),
+  wholeWheat('Whole Wheat', 'A hearty and healthy whole wheat bread.'),
+  sourdough('Sourdough', 'A tangy sourdough bread with a crispy crust.');
+
+  @override
+  final String name;
+  @override
+  final String description;
+
+  const Bread(this.name, this.description);
+}
+
+enum Sausage implements Ingredient {
+  porkSausage('Pork Sausage', 'A savory pork sausage with a juicy flavor.'),
+  beefSausage('Beef Sausage', 'A rich beef sausage with a bold taste.'),
+  chickenSausage('Chicken Sausage', 'A lighter sausage made from chicken.');
+
+  @override
+  final String name;
+  @override
+  final String description;
+
+  const Sausage(this.name, this.description);
 }
