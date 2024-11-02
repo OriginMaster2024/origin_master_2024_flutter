@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
+import 'package:origin_master_2024_flutter/domain_object/personality_type.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
-import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 
 class ResultPage extends StatelessWidget {
   const ResultPage({super.key});
@@ -69,26 +69,5 @@ class ResultPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-// TODO: Move to DomainObjects folder
-enum PersonalityType {
-  leader,
-  freeSpirited,
-  seeker,
-  revolutionary,
-  stabilityOriented,
-}
-
-extension PersonalityTypeExtension on PersonalityType {
-  Widget get image {
-    return switch (this){
-      PersonalityType.leader => Assets.png.leader.image(),
-      PersonalityType.freeSpirited => Assets.png.freeSpirited.image(),
-      PersonalityType.seeker => Assets.png.seeker.image(),
-      PersonalityType.revolutionary => Assets.png.revolutionary.image(),
-      PersonalityType.stabilityOriented => Assets.png.stabilityOriented.image(),
-    };
   }
 }
