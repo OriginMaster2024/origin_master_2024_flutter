@@ -9,7 +9,7 @@ class ThreeDimensionalContainer extends StatelessWidget {
   const ThreeDimensionalContainer({
     super.key,
     required this.child,
-    this.backgroundColor = Colors.white,
+    this.backgroundColor = const Color(0xFFFFF6E1),
     this.shadowColor = Colors.black,
   });
 

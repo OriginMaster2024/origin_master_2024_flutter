@@ -8,6 +8,7 @@ import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
+import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
 const _breadSizeRatio = 0.7;
@@ -191,12 +192,15 @@ class EtudePage extends HookConsumerWidget {
                 !isCountDownTimerRunning &&
                 !isGameFailed.value &&
                 !isGameSucceeded.value)
-              // TODO: ボタン差し替える
-              FilledButton(
-                onPressed:
-                    isDeviceFrontHorizontal.value ? startCountDownTimer : null,
-                child: Text(
-                  isDeviceFrontHorizontal.value ? 'スタート' : '🌭画面を水平にしてください🌭',
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ActionButton(
+                  onPressed: isDeviceFrontHorizontal.value
+                      ? startCountDownTimer
+                      : null,
+                  title: isDeviceFrontHorizontal.value
+                      ? 'スタート'
+                      : '🌭画面を水平にしてください🌭',
                 ),
               ),
             if (isGameFailed.value || isGameSucceeded.value) ...[
@@ -208,9 +212,12 @@ class EtudePage extends HookConsumerWidget {
                     style: AppTextStyle.bold(fontSize: 32, color: Colors.white),
                   ),
                   const Gap(24),
-                  FilledButton(
-                    onPressed: showResultPage,
-                    child: const Text('診断結果へ'),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: ActionButton(
+                      onPressed: showResultPage,
+                      title: '診断結果へ',
+                    ),
                   ),
                 ],
               ),
