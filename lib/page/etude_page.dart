@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -159,7 +160,16 @@ class EtudePage extends HookConsumerWidget {
               // 下側に半分落ちかけ
             }
 
-            // TODO: centerPercentagesの計算
+            final sausaceCenter = sausageTopPosition.value + sausageHeight / 2;
+            final breadCenter = breadTopPosition + breadHeight / 2;
+            final sausageCenterPercentage = max<double>(
+              1 - ((sausaceCenter - breadCenter) / breadHeight).abs(),
+              0,
+            );
+
+            centerPercentages.value.add(
+              (sausageCenterPercentage * 100).round() / 100,
+            );
           }
         });
         return subscription.cancel;
