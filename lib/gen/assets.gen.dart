@@ -73,6 +73,26 @@ class $AssetsPngGen {
   AssetGenImage get titleBreadRegular =>
       const AssetGenImage('assets/png/title_bread_regular.png');
 
+  /// File path: assets/png/title_personality_free_spirited.png
+  AssetGenImage get titlePersonalityFreeSpirited =>
+      const AssetGenImage('assets/png/title_personality_free_spirited.png');
+
+  /// File path: assets/png/title_personality_leader.png
+  AssetGenImage get titlePersonalityLeader =>
+      const AssetGenImage('assets/png/title_personality_leader.png');
+
+  /// File path: assets/png/title_personality_revolutionary.png
+  AssetGenImage get titlePersonalityRevolutionary =>
+      const AssetGenImage('assets/png/title_personality_revolutionary.png');
+
+  /// File path: assets/png/title_personality_seeker.png
+  AssetGenImage get titlePersonalitySeeker =>
+      const AssetGenImage('assets/png/title_personality_seeker.png');
+
+  /// File path: assets/png/title_personality_stability_oriented.png
+  AssetGenImage get titlePersonalityStabilityOriented => const AssetGenImage(
+      'assets/png/title_personality_stability_oriented.png');
+
   /// File path: assets/png/title_sausage_bratwurst.png
   AssetGenImage get titleSausageBratwurst =>
       const AssetGenImage('assets/png/title_sausage_bratwurst.png');
@@ -102,6 +122,11 @@ class $AssetsPngGen {
         titleBreadFrench,
         titleBreadPotato,
         titleBreadRegular,
+        titlePersonalityFreeSpirited,
+        titlePersonalityLeader,
+        titlePersonalityRevolutionary,
+        titlePersonalitySeeker,
+        titlePersonalityStabilityOriented,
         titleSausageBratwurst,
         titleSausageChorizo,
         titleSausageFrankfurter,
