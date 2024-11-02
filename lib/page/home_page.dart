@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/hot_dog_select_page.dart';
+import 'package:origin_master_2024_flutter/widgets/action_button.dart';
+import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
             left: 16,
             right: 16,
             bottom: safeAreaBottom + 80,
-            child: FilledButton(
+            child: ActionButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute<HotDogSelectPage>(
@@ -37,7 +39,15 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('診断開始'),
+              child: Center(
+                child: Text(
+                  '診断開始',
+                  style: AppTextStyle.bold(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           ),
         ],
