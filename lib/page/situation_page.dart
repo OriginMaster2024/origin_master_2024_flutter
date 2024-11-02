@@ -39,6 +39,13 @@ class SituationPage extends StatelessWidget {
                   child: Text(selected.description, textAlign: TextAlign.center, style: AppTextStyle.medium(color: Colors.black, fontSize: 20)),
                 ),
               ),
+              const Gap(16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ThreeDimensionalContainer(
+                  child: selected.image,
+                ),
+              ),
               const Spacer(),
               SizedBox(
                 width: DeviceSize.width - 32,
