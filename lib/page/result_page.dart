@@ -64,7 +64,7 @@ class ResultPage extends StatelessWidget {
                 },
                 title: "おわる",
               ),
-            )
+            ),
           ],
         ),
       ),
