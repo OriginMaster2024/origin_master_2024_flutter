@@ -82,7 +82,7 @@ enum Situation {
       case Situation.swimming:
         return '水泳大会ゴール目前！\nクロールで駆け抜けろ！！';
       case Situation.entranceCeremony:
-        return '入学式で新入生代表スピーチ！壇上で原稿を読み終えて一礼！！';
+        return '入学式で新入生代表スピーチ！\n壇上で原稿を読み終えて一礼！！';
     }
   }
 }
