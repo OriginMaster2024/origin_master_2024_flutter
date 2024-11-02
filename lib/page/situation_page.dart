@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/page/etude_page.dart';
+import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 
 class SituationPage extends StatelessWidget {
   const SituationPage({super.key});
@@ -19,7 +21,13 @@ class SituationPage extends StatelessWidget {
               ),
             );
           },
-          child: const Text('決定'),
+          child: SizedBox(
+            width: DeviceSize.width - 32,
+            child: ActionButton(
+              onPressed: () {},
+              title: "診断をはじめる",
+            ),
+          ),
         ),
       ),
     );
