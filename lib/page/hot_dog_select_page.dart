@@ -3,10 +3,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gap/gap.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/situation_page.dart';
+import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
+import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
 
 class HotDogSelectPage extends HookWidget {
   const HotDogSelectPage({super.key});
@@ -19,14 +22,16 @@ class HotDogSelectPage extends HookWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('ホットドッグ'),
-          automaticallyImplyLeading: false,
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const Gap(32),
               const IngredientCard(type: 'パン', options: Bread.values),
+              const Gap(32),
               const IngredientCard(type: 'ソーセージ', options: Sausage.values),
+              const Spacer(),
               SizedBox(
                 width: DeviceSize.width - 32,
                 child: ActionButton(
@@ -40,6 +45,7 @@ class HotDogSelectPage extends HookWidget {
                   title: "次へ",
                 ),
               ),
+              const Gap(64),
             ],
           ),
         ),
@@ -54,35 +60,69 @@ class IngredientCard extends HookWidget {
   final String type;
   final List<Ingredient> options;
 
+  Row buildIngredientInfoWidget(Ingredient ingredient) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                ingredient.name,
+                style: AppTextStyle.bold(color: Colors.black, fontSize: 26),
+              ),
+              Text(
+                ingredient.description,
+                style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(width: 100, child: ingredient.image.svg(height: 140)),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final selected = useState<Ingredient?>(null);
     Timer? timer;
 
     void startSelecting() {
-      timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
+      timer = Timer.periodic(const Duration(milliseconds: 80), (timer) {
         selected.value = options[Random().nextInt(options.length)];
       });
 
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(const Duration(milliseconds: 1500), () {
         timer?.cancel();
       });
     }
 
-    return SizedBox(
-      width: 300,
-      height: 150,
-      child: Column(
-        children: [
-          Text('$typeの種類'),
-          Text(selected.value?.name ?? ''),
-          Text(selected.value?.description ?? ''),
-          if (selected.value == null)
-            ElevatedButton(
-              onPressed: startSelecting,
-              child: const Text('選択'),
-            ),
-        ],
+    return ThreeDimensionalContainer(
+      child: SizedBox(
+        width: DeviceSize.width - 32,
+        height: 200,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$typeの種類',
+                style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+              ),
+              const Gap(8),
+              selected.value != null
+                  ? buildIngredientInfoWidget(selected.value!)
+                  : ActionButton(
+                      onPressed: startSelecting,
+                      title: '$typeを選ぶ',
+                    ),
+            ],
+          ),
+        ),
       ),
     );
   }
