@@ -22,6 +22,7 @@ class HotDogSelectPage extends HookWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('ホットドッグ'),
+          automaticallyImplyLeading: false,
         ),
         body: Center(
           child: Column(
