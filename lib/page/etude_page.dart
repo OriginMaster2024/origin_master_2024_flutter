@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
+import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 
@@ -20,6 +21,9 @@ class EtudePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final homeBGMPlayer = ref.watch(homeBGMPlayerProvider);
+    final etudeBGMPlayer = ref.watch(etudeBGMPlayerProvider);
+
     final isDeviceFrontHorizontal = useState(false);
 
     final countDownCount = useState(3);
@@ -54,11 +58,14 @@ class EtudePage extends HookConsumerWidget {
         useState((MediaQuery.sizeOf(context).height - sausageHeight) / 2);
 
     void startGameTimer() {
+      etudeBGMPlayer?.resume();
+
       gameTimer.value = Timer.periodic(
         const Duration(seconds: 1),
         (t) {
           gameTimeCount.value--;
           if (gameTimeCount.value == 0) {
+            etudeBGMPlayer?.pause();
             t.cancel();
             gameTimer.value = null;
             gameTimeCount.value = 10;
@@ -69,6 +76,8 @@ class EtudePage extends HookConsumerWidget {
     }
 
     void startCountDownTimer() {
+      homeBGMPlayer?.pause();
+
       countDownTimer.value = Timer.periodic(
         const Duration(seconds: 1),
         (t) {
@@ -84,6 +93,7 @@ class EtudePage extends HookConsumerWidget {
     }
 
     void failedGame() {
+      etudeBGMPlayer?.pause();
       gameTimer.value?.cancel();
       gameTimer.value = null;
       isGameFailed.value = true;

@@ -15,11 +15,14 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsMusicGen {
   const $AssetsMusicGen();
 
+  /// File path: assets/music/Run.mp3
+  String get run => 'assets/music/Run.mp3';
+
   /// File path: assets/music/Timeless_Journey.mp3
   String get timelessJourney => 'assets/music/Timeless_Journey.mp3';
 
   /// List of all assets
-  List<String> get values => [timelessJourney];
+  List<String> get values => [run, timelessJourney];
 }
 
 class $AssetsPngGen {
