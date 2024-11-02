@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:origin_master_2024_flutter/widgets/three_dimensional_container.dart';
@@ -42,6 +43,7 @@ class ResultPage extends StatelessWidget {
                 ),
               ),
             ),
+            const Gap(16),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 64),
               child: ActionButton(
