@@ -23,7 +23,7 @@ class ActionButton extends StatelessWidget {
           child: Text(
             title,
             style: AppTextStyle.bold(
-              fontSize: 14,
+              fontSize: 16,
               color: Colors.white,
             ),
           ),
