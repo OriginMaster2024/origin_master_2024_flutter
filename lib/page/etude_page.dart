@@ -222,17 +222,30 @@ class EtudePage extends HookConsumerWidget {
                 !isCountDownTimerRunning &&
                 !isGameFailed.value &&
                 !isGameSucceeded.value)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: ActionButton(
-                  onPressed: isDeviceFrontHorizontal.value
-                      ? startCountDownTimer
-                      : null,
-                  title: isDeviceFrontHorizontal.value
-                      ? 'スタート'
-                      : '🌭画面を水平にしてください🌭',
-                ),
-              ),
+              isDeviceFrontHorizontal.value
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: ActionButton(
+                        onPressed: isDeviceFrontHorizontal.value
+                            ? startCountDownTimer
+                            : null,
+                        title: 'スタート',
+                      ),
+                    )
+                  : Container(
+                      height: 64,
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        border: Border.all(color: Colors.black, width: 4),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '🌭画面を水平にしてください🌭',
+                          style: AppTextStyle.bold(fontSize: 16),
+                        ),
+                      ),
+                    ),
             if (isGameFailed.value || isGameSucceeded.value) ...[
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
