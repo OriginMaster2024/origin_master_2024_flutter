@@ -29,7 +29,10 @@ class ThreeDimensionalContainer extends StatelessWidget {
           ),
         ],
       ),
-      child: child,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: child,
+      ),
     );
   }
 }
