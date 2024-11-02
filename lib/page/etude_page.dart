@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
+import 'package:origin_master_2024_flutter/providers/bread_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 import 'package:sensors_plus/sensors_plus.dart';
@@ -25,6 +25,13 @@ class EtudePage extends HookConsumerWidget {
     final homeBGMPlayer = ref.watch(homeBGMPlayerProvider);
     final etudeBGMPlayer = ref.watch(etudeBGMPlayerProvider);
     final countDownSEPlayer = ref.watch(coundDownSEPlayerProvider);
+
+    final bread = ref.watch(breadProvider);
+    final sausage = ref.watch(sausageProvider);
+
+    if (bread == null || sausage == null) {
+      throw Exception('bread or sausage is null');
+    }
 
     final isDeviceFrontHorizontal = useState(false);
 
@@ -161,14 +168,14 @@ class EtudePage extends HookConsumerWidget {
               height: MediaQuery.sizeOf(context).height,
               color: Colors.white,
             ),
-            Assets.svg.bread.svg(
+            bread.image.svg(
               width: MediaQuery.sizeOf(context).width * _breadSizeRatio,
               height: MediaQuery.sizeOf(context).height * _breadSizeRatio,
             ),
             AnimatedPositioned(
               duration: SensorInterval.normalInterval,
               top: sausageTopPosition.value,
-              child: Assets.svg.sausage.svg(
+              child: sausage.image.svg(
                 width: MediaQuery.sizeOf(context).width * _sausageSizeRatio,
                 height: sausageHeight,
               ),
