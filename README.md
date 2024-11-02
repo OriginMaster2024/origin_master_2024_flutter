@@ -9,5 +9,6 @@
   echo -e "\n. \"$(brew --prefix asdf)/libexec/asdf.sh\"" >> ~/.zshrc
   source ~/.zshrc
   asdf plugin add flutter
+  asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
   asdf install
   ```
