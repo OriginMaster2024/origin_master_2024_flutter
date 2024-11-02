@@ -2,9 +2,9 @@ import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 
 abstract class Ingredient {
   String get name;
-
   String get description;
 
+  AssetGenImage get titleImage;
   SvgGenImage get image;
 }
 
@@ -20,6 +20,20 @@ enum Bread implements Ingredient {
   final String name;
   @override
   final String description;
+
+  @override
+  AssetGenImage get titleImage {
+    switch (this) {
+      case Bread.regular:
+        return Assets.png.titleBreadRegular;
+      case Bread.potato:
+        return Assets.png.titleBreadPotato;
+      case Bread.brioche:
+        return Assets.png.titleBreadBrioche;
+      case Bread.french:
+        return Assets.png.titleBreadFrench;
+    }
+  }
 
   @override
   SvgGenImage get image {
@@ -60,6 +74,20 @@ enum Sausage implements Ingredient {
   final String name;
   @override
   final String description;
+
+  @override
+  AssetGenImage get titleImage {
+    switch (this) {
+      case chorizo:
+        return Assets.png.titleSausageChorizo;
+      case bratwurst:
+        return Assets.png.titleSausageBratwurst;
+      case frankfurter:
+        return Assets.png.titleSausageFrankfurter;
+      case wiener:
+        return Assets.png.titleSausageWiener;
+    }
+  }
 
   @override
   SvgGenImage get image {
