@@ -31,9 +31,10 @@ class ResultPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
+                      Gap(32),
                       SizedBox(
-                        width: DeviceSize.width - 96,
-                        height: DeviceSize.width - 96,
+                        width: DeviceSize.width - 128,
+                        height: DeviceSize.width - 128,
                         child: ThreeDimensionalContainer(
                             child: personalityType.image
                         ),
