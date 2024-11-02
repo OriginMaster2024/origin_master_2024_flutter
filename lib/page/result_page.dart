@@ -39,6 +39,7 @@ class ResultPage extends StatelessWidget {
                             child: personalityType.image
                         ),
                       ),
+                      Gap(32),
                       ThreeDimensionalContainer(
                           child: Padding(
                             padding: EdgeInsets.all(16),
