@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
@@ -9,7 +10,9 @@ import 'package:sensors_plus/sensors_plus.dart';
 
 const _breadSizeRatio = 0.7;
 const _sausageSizeRatio = 0.75;
-const _sausageMoveSpeed = 10;
+
+// NOTE: これを変えるとゲームの難易度が変わる
+const _sausageMoveSpeed = 100;
 
 class EtudePage extends HookConsumerWidget {
   const EtudePage({super.key});
@@ -26,7 +29,26 @@ class EtudePage extends HookConsumerWidget {
     final gameTimer = useState<Timer?>(null);
     final isGameTimerRunning = gameTimer.value != null;
 
-    final sausageHeight = MediaQuery.sizeOf(context).height * _sausageSizeRatio;
+    final isGameFailed = useState(false);
+    final isGameSucceeded = useState(false);
+
+    final breadHeight = useMemoized(
+      () => MediaQuery.sizeOf(context).height * _breadSizeRatio,
+      [context, _breadSizeRatio],
+    );
+    final breadTopPosition = useMemoized(
+      () => (MediaQuery.sizeOf(context).height - breadHeight) / 2,
+      [context, breadHeight],
+    );
+    final breadBottomPosition = useMemoized(
+      () => breadTopPosition + breadHeight,
+      [breadTopPosition, breadHeight],
+    );
+
+    final sausageHeight = useMemoized(
+      () => MediaQuery.sizeOf(context).height * _sausageSizeRatio,
+      [context, _sausageSizeRatio],
+    );
     final sausageTopPosition =
         useState((MediaQuery.sizeOf(context).height - sausageHeight) / 2);
 
@@ -39,7 +61,7 @@ class EtudePage extends HookConsumerWidget {
             t.cancel();
             gameTimer.value = null;
             gameTimeCount.value = 10;
-            // TODO: ゲーム終了処理
+            isGameSucceeded.value = true;
           }
         },
       );
@@ -60,12 +82,38 @@ class EtudePage extends HookConsumerWidget {
       );
     }
 
+    void failedGame() {
+      gameTimer.value?.cancel();
+      gameTimer.value = null;
+      isGameFailed.value = true;
+    }
+
+    void showResultPage() {
+      // TODO: 診断結果ページへ遷移
+    }
+
     useEffect(
       () {
         final subscription = accelerometerEventStream().listen((event) {
           isDeviceFrontHorizontal.value = event.y.abs() < 3 && event.z > 9.0;
           if (isGameTimerRunning) {
             sausageTopPosition.value += event.y * _sausageMoveSpeed;
+            final sausageBottomPosition =
+                sausageTopPosition.value + sausageHeight;
+            final topDiff = sausageBottomPosition - breadTopPosition;
+            final bottomDiff = sausageTopPosition.value - breadBottomPosition;
+
+            if (topDiff < 0) {
+              // 上側に落ちた場合
+              failedGame();
+            } else if (bottomDiff > 0) {
+              // 下側に落ちた場合
+              failedGame();
+            } else if (topDiff < breadHeight / 2) {
+              // 上側に半分落ちかけ
+            } else if (bottomDiff > breadHeight / 2) {
+              // 下側に半分落ちかけ
+            }
           }
         });
         return subscription.cancel;
@@ -94,7 +142,7 @@ class EtudePage extends HookConsumerWidget {
               height: sausageHeight,
             ),
           ),
-          if (isGameTimerRunning)
+          if (isGameTimerRunning || isGameFailed.value)
             Positioned(
               top: MediaQuery.viewPaddingOf(context).top + 16,
               right: 16,
@@ -107,9 +155,12 @@ class EtudePage extends HookConsumerWidget {
           if (isCountDownTimerRunning)
             Text(
               countDownCount.value.toString(),
-              style: AppTextStyle.bold(fontSize: 64, color: Colors.yellow),
+              style: AppTextStyle.bold(fontSize: 120, color: Colors.yellow),
             ),
-          if (!isGameTimerRunning && !isCountDownTimerRunning)
+          if (!isGameTimerRunning &&
+              !isCountDownTimerRunning &&
+              !isGameFailed.value &&
+              !isGameSucceeded.value)
             // TODO: ボタン差し替える
             FilledButton(
               onPressed:
@@ -118,6 +169,22 @@ class EtudePage extends HookConsumerWidget {
                 isDeviceFrontHorizontal.value ? 'スタート' : '🌭画面を水平にしてください🌭',
               ),
             ),
+          if (isGameFailed.value || isGameSucceeded.value) ...[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  isGameFailed.value ? '🌭が落ちちゃった！' : '🌭をキープできた！',
+                  style: AppTextStyle.bold(fontSize: 32, color: Colors.white),
+                ),
+                const Gap(24),
+                FilledButton(
+                  onPressed: showResultPage,
+                  child: const Text('診断結果へ'),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
