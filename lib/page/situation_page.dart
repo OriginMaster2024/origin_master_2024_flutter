@@ -67,10 +67,7 @@ enum Situation {
   highFive,
   dash,
   election,
-  rainyDay,
-  radioCalisthenics,
   swimming,
-  entranceCeremony,
   ;
 
   const Situation();
@@ -87,14 +84,8 @@ enum Situation {
         return '家を出るのが遅れてしまい、電車を逃しそうだ！\n最寄りの駅までダッシュをしよう！';
       case Situation.election:
         return '選挙に出馬し色んな人に知ってもらいたい！\n街ゆく人に挨拶をしよう！';
-      case Situation.rainyDay:
-        return '激しい雨風で傘がひっくり返ってしまった！\n風で傘が飛ばされてしまいそう！！';
-      case Situation.radioCalisthenics:
-        return 'ラジオ体操第一！\n腕を回す運動！！';
       case Situation.swimming:
         return '水泳大会ゴール目前！\nクロールで駆け抜けろ！！';
-      case Situation.entranceCeremony:
-        return '入学式で新入生代表スピーチ！\n壇上で原稿を読み終えて一礼！！';
     }
   }
 }
