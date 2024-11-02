@@ -39,15 +39,7 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
-              child: Center(
-                child: Text(
-                  '診断開始',
-                  style: AppTextStyle.bold(
-                    fontSize: 14,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+              title: "はじめる",
             ),
           ),
         ],
