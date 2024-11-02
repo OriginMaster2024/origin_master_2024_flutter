@@ -36,7 +36,7 @@ class ResultPage extends StatelessWidget {
                         width: DeviceSize.width - 128,
                         height: DeviceSize.width - 128,
                         child: ThreeDimensionalContainer(
-                            child: personalityType.image
+                            child: personalityType.image,
                         ),
                       ),
                       const Gap(32),
@@ -49,7 +49,7 @@ class ResultPage extends StatelessWidget {
                               ],
                             ),
                           )
-                      )
+                      ),
                     ],
                   ),
                 ),
