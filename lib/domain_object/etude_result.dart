@@ -1,0 +1,1 @@
+enum EtudeResult { success, failure }
