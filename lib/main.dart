@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/page/home_page.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 
@@ -14,12 +15,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  final colorScheme = const ColorScheme.light(
+    primary: Color(0xFFF85A2B),
+    surface: Color(0xFFFFFDF2),
+  );
+
   @override
   Widget build(BuildContext context) {
-    const colorScheme = ColorScheme.light(
-      primary: Color(0xFFF85A2B),
-      surface: Color(0xFFFFFDF2),
-    );
+    DeviceSize.ensureInitialized(context);
 
     return MaterialApp(
       title: 'Flutter Demo',

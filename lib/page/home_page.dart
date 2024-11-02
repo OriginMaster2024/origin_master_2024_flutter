@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/hot_dog_select_page.dart';
+import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 
 class HomePage extends HookWidget {
   const HomePage({super.key});
@@ -44,7 +45,7 @@ class HomePage extends HookWidget {
             left: 16,
             right: 16,
             bottom: safeAreaBottom + 80,
-            child: FilledButton(
+            child: ActionButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute<HotDogSelectPage>(
@@ -52,7 +53,7 @@ class HomePage extends HookWidget {
                   ),
                 );
               },
-              child: const Text('診断開始'),
+              title: "はじめる",
             ),
           ),
         ],
