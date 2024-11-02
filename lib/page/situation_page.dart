@@ -63,6 +63,7 @@ class SituationPage extends StatelessWidget {
 
 enum Situation {
   boxing,
+  wave,
   highFive,
   rainyDay,
   radioCalisthenics,
@@ -76,6 +77,8 @@ enum Situation {
     switch (this) {
       case Situation.boxing:
         return 'ボクシングの試合中だ！\n相手のパンチを避けながらカウンターパンチ！';
+      case Situation.wave:
+        return 'ライブ中に左からウェーブが来た！\n周りに合わせてウェーブをしよう！';
       case Situation.highFive:
         return 'サッカー試合でPKを決めた！\nチームメンバーたちとハイタッチ！！';
       case Situation.rainyDay:
