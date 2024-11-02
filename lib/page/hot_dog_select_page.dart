@@ -102,27 +102,28 @@ class IngredientCard extends HookWidget {
     }
 
     return ThreeDimensionalContainer(
-      child: SizedBox(
+      child: Container(
         width: DeviceSize.width - 32,
         height: 200,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '$typeの種類',
-                style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
-              ),
-              const Gap(8),
-              selected.value != null
-                  ? buildIngredientInfoWidget(selected.value!)
-                  : ActionButton(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$typeの種類',
+              style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+            ),
+            const Gap(8),
+            selected.value != null
+                ? buildIngredientInfoWidget(selected.value!)
+                : Padding(
+                    padding: const EdgeInsets.fromLTRB(80, 40, 80, 0),
+                    child: ActionButton(
                       onPressed: startSelecting,
                       title: '$typeを選ぶ',
                     ),
-            ],
-          ),
+                  ),
+          ],
         ),
       ),
     );
