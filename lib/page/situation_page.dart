@@ -65,6 +65,7 @@ enum Situation {
   boxing,
   wave,
   highFive,
+  dash,
   rainyDay,
   radioCalisthenics,
   swimming,
@@ -81,6 +82,8 @@ enum Situation {
         return 'ライブ中に左からウェーブが来た！\n周りに合わせてウェーブをしよう！';
       case Situation.highFive:
         return 'サッカー試合でPKを決めた！\nチームメンバーたちとハイタッチ！！';
+      case Situation.dash:
+        return '家を出るのが遅れてしまい、電車を逃しそうだ！\n最寄りの駅までダッシュをしよう！';
       case Situation.rainyDay:
         return '激しい雨風で傘がひっくり返ってしまった！\n風で傘が飛ばされてしまいそう！！';
       case Situation.radioCalisthenics:
