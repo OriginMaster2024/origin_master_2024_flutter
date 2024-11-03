@@ -71,10 +71,7 @@ class HomePage extends HookConsumerWidget {
             child: Assets.png.homeTopBar.image(),
           ),
           Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Assets.png.homeLabel.image(),
-            ),
+            child: Assets.png.homeLabel.image(),
           ),
           Positioned(
             left: 16,
