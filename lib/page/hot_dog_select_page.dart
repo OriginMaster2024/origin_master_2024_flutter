@@ -7,6 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/domain_object/ingredient.dart';
+import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
 import 'package:origin_master_2024_flutter/page/situation_page.dart';
 import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
@@ -94,25 +95,43 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
   final List<T> options;
   final void Function(T) onSelected;
 
-  Row buildIngredientInfoWidget(T ingredient) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget buildIngredientInfoWidget(T ingredient) {
+    return Column(
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ingredient.titleImage.image(height: 32),
-              const Gap(8),
-              Text(
-                ingredient.description,
-                style: AppTextStyle.medium(color: Colors.black87, fontSize: 14),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ingredient.titleImage.image(height: 32),
+                  const Gap(8),
+                  Text(
+                    ingredient.description,
+                    style: AppTextStyle.medium(color: Colors.black87, fontSize: 14),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(width: 100, child: ingredient.image.svg(height: 140)),
+          ],
         ),
-        SizedBox(width: 100, child: ingredient.image.svg(height: 140)),
+        const Gap(16),
+        Row(
+          children: [
+            Text(
+              "すべりやすさ",
+              style: AppTextStyle.bold(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+            const Gap(8),
+            Assets.png.warningSlippingLevel1.image(height: 48),
+          ],
+        )
       ],
     );
   }
@@ -139,7 +158,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
     return ThreeDimensionalContainer(
       child: Container(
         width: DeviceSize.width - 32,
-        height: 200,
+        height: 270,
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
