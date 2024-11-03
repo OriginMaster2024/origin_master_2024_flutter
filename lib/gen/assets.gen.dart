@@ -77,6 +77,10 @@ class $AssetsPngGen {
   AssetGenImage get situationWave =>
       const AssetGenImage('assets/png/situation_wave.png');
 
+  /// File path: assets/png/situations.png
+  AssetGenImage get situations =>
+      const AssetGenImage('assets/png/situations.png');
+
   /// File path: assets/png/stability_oriented.png
   AssetGenImage get stabilityOriented =>
       const AssetGenImage('assets/png/stability_oriented.png');
@@ -147,6 +151,7 @@ class $AssetsPngGen {
         situationHighFive,
         situationSwimming,
         situationWave,
+        situations,
         stabilityOriented,
         titleBreadBrioche,
         titleBreadFrench,
