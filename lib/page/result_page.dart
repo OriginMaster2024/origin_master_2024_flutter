@@ -75,8 +75,8 @@ class ResultPage extends HookConsumerWidget {
                             Text(
                               "あなたの性格タイプは...",
                               style: AppTextStyle.medium(
-                                color: Colors.black,
-                                fontSize: 12,
+                                color: Colors.black87,
+                                fontSize: 14,
                               ),
                             ),
                             const Gap(10),
@@ -84,15 +84,15 @@ class ResultPage extends HookConsumerWidget {
                               const Center(child: CircularProgressIndicator()),
                             if (!personalDiagnosis.isLoading) ...[
                               SizedBox(
-                                height: 26,
+                                height: 32,
                                 child: personalDiagnosis.value?.type.titleImage,
                               ),
                               const Gap(10),
                               Text(
                                 personalDiagnosis.value?.description ?? "",
                                 style: AppTextStyle.medium(
-                                  color: Colors.black,
-                                  fontSize: 12,
+                                  color: Colors.black87,
+                                  fontSize: 14,
                                 ),
                               ),
                             ],
