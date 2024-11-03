@@ -7,6 +7,7 @@ enum Difficulty {
   hard,
   ;
 
+  // NOTE: これを変えるとゲームの難易度が変わる
   int get sausageMoveSpeed {
     switch (this) {
       case Difficulty.easy:
