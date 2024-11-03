@@ -6,6 +6,7 @@ abstract class Ingredient {
 
   AssetGenImage get titleImage;
   SvgGenImage get image;
+  int get slippingLevel;
 }
 
 enum Bread implements Ingredient {
@@ -46,6 +47,20 @@ enum Bread implements Ingredient {
         return Assets.svg.breadBrioche;
       case Bread.french:
         return Assets.svg.breadFrench;
+    }
+  }
+
+  @override
+  int get slippingLevel {
+    switch (this) {
+      case Bread.regular:
+        return 2;
+      case Bread.potato:
+        return 3;
+      case Bread.brioche:
+        return 4;
+      case Bread.french:
+        return 1;
     }
   }
 }
@@ -100,6 +115,20 @@ enum Sausage implements Ingredient {
         return Assets.svg.sausageFrankfurter;
       case wiener:
         return Assets.svg.sausageWiener;
+    }
+  }
+
+  @override
+  int get slippingLevel {
+    switch (this) {
+      case chorizo:
+        return 4;
+      case bratwurst:
+        return 3;
+      case frankfurter:
+        return 1;
+      case wiener:
+        return 2;
     }
   }
 }

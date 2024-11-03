@@ -10,6 +10,7 @@ import 'package:origin_master_2024_flutter/domain_object/etude_result.dart';
 import 'package:origin_master_2024_flutter/exceptions/hot_dog_exception.dart';
 import 'package:origin_master_2024_flutter/page/result_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
+import 'package:origin_master_2024_flutter/providers/difficulty_provider.dart';
 import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
 import 'package:origin_master_2024_flutter/theme/app_text_style.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
@@ -18,8 +19,6 @@ import 'package:sensors_plus/sensors_plus.dart';
 const _breadSizeRatio = 0.7;
 const _sausageSizeRatio = 0.75;
 
-// NOTE: これを変えるとゲームの難易度が変わる
-const _sausageMoveSpeed = 100;
 
 class EtudePage extends HookConsumerWidget {
   const EtudePage({super.key});
@@ -32,8 +31,9 @@ class EtudePage extends HookConsumerWidget {
 
     final bread = ref.watch(breadProvider);
     final sausage = ref.watch(sausageProvider);
+    final difficulty = ref.watch(difficultyProvider);
 
-    if (bread == null || sausage == null) {
+    if (bread == null || sausage == null || difficulty == null) {
       return const SizedBox.shrink();
     }
 
@@ -144,7 +144,7 @@ class EtudePage extends HookConsumerWidget {
         final subscription = accelerometerEventStream().listen((event) {
           isDeviceFrontHorizontal.value = event.y.abs() < 3 && event.z > 9.0;
           if (isGameTimerRunning) {
-            sausageTopPosition.value += event.y * _sausageMoveSpeed;
+            sausageTopPosition.value += event.y * difficulty.sausageMoveSpeed;
             final sausageBottomPosition =
                 sausageTopPosition.value + sausageHeight;
             final topDiff = sausageBottomPosition - breadTopPosition;
