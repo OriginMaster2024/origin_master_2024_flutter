@@ -131,7 +131,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
             const Gap(8),
             warningSlippingImage(level: ingredient.slippingLevel),
           ],
-        )
+        ),
       ],
     );
   }
