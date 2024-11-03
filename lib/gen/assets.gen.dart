@@ -133,6 +133,22 @@ class $AssetsPngGen {
   AssetGenImage get titleSausageWiener =>
       const AssetGenImage('assets/png/title_sausage_wiener.png');
 
+  /// File path: assets/png/warning_slipping_level1.png
+  AssetGenImage get warningSlippingLevel1 =>
+      const AssetGenImage('assets/png/warning_slipping_level1.png');
+
+  /// File path: assets/png/warning_slipping_level2.png
+  AssetGenImage get warningSlippingLevel2 =>
+      const AssetGenImage('assets/png/warning_slipping_level2.png');
+
+  /// File path: assets/png/warning_slipping_level3.png
+  AssetGenImage get warningSlippingLevel3 =>
+      const AssetGenImage('assets/png/warning_slipping_level3.png');
+
+  /// File path: assets/png/warning_slipping_level4.png
+  AssetGenImage get warningSlippingLevel4 =>
+      const AssetGenImage('assets/png/warning_slipping_level4.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         freeSpirited,
@@ -160,7 +176,11 @@ class $AssetsPngGen {
         titleSausageBratwurst,
         titleSausageChorizo,
         titleSausageFrankfurter,
-        titleSausageWiener
+        titleSausageWiener,
+        warningSlippingLevel1,
+        warningSlippingLevel2,
+        warningSlippingLevel3,
+        warningSlippingLevel4
       ];
 }
 
