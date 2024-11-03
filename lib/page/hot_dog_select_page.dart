@@ -103,11 +103,11 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ingredient.titleImage.image(height: 26),
+              ingredient.titleImage.image(height: 32),
               const Gap(8),
               Text(
                 ingredient.description,
-                style: AppTextStyle.medium(color: Colors.black, fontSize: 12),
+                style: AppTextStyle.medium(color: Colors.black87, fontSize: 14),
               ),
             ],
           ),
