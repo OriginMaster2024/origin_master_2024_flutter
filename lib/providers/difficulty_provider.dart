@@ -4,7 +4,19 @@ import 'package:origin_master_2024_flutter/providers/ingredient_provider.dart';
 enum Difficulty {
   easy,
   normal,
-  hard
+  hard,
+  ;
+
+  int get sausageMoveSpeed {
+    switch (this) {
+      case Difficulty.easy:
+        return 70;
+      case Difficulty.normal:
+        return 100;
+      case Difficulty.hard:
+        return 200;
+    }
+  }
 }
 
 final difficultyProvider = Provider<Difficulty?>((ref) {
