@@ -118,7 +118,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
             SizedBox(width: 100, child: ingredient.image.svg(height: 140)),
           ],
         ),
-        const Gap(16),
+        const Spacer(),
         Row(
           children: [
             Text(
@@ -129,11 +129,24 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
               ),
             ),
             const Gap(8),
-            Assets.png.warningSlippingLevel1.image(height: 48),
+            warningSlippingImage(level: ingredient.slippingLevel),
           ],
         )
       ],
     );
+  }
+
+  Widget warningSlippingImage({required int level}) {
+    switch (level) {
+      case 1:
+        return Assets.png.warningSlippingLevel1.image(height: 48);
+      case 2:
+        return Assets.png.warningSlippingLevel2.image(height: 48);
+      case 3:
+        return Assets.png.warningSlippingLevel3.image(height: 48);
+      default:
+        return Assets.png.warningSlippingLevel4.image(height: 48);
+    }
   }
 
   @override
@@ -169,7 +182,7 @@ class IngredientCard<T extends Ingredient> extends HookWidget {
             ),
             const Gap(8),
             selected.value != null
-                ? buildIngredientInfoWidget(selected.value!)
+                ? Expanded(child: buildIngredientInfoWidget(selected.value!))
                 : Padding(
                     padding: const EdgeInsets.fromLTRB(80, 40, 80, 0),
                     child: ActionButton(
