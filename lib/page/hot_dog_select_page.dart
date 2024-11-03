@@ -70,7 +70,7 @@ class HotDogSelectPage extends HookConsumerWidget {
                           );
                         }
                       : null,
-                  title: "次へ",
+                  title: "シチュエーションを確認する",
                 ),
               ),
               const Gap(64),

@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:origin_master_2024_flutter/constants/device_size.dart';
 import 'package:origin_master_2024_flutter/gen/assets.gen.dart';
-import 'package:origin_master_2024_flutter/page/hot_dog_select_page.dart';
+import 'package:origin_master_2024_flutter/page/description_page.dart';
 import 'package:origin_master_2024_flutter/providers/audio_player_provider.dart';
 import 'package:origin_master_2024_flutter/widgets/action_button.dart';
 
@@ -16,7 +16,6 @@ class HomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final homeBGMPlayer = ref.watch(homeBGMPlayerProvider);
     final safeAreaTop = MediaQuery.paddingOf(context).top;
-    final safeAreaBottom = MediaQuery.paddingOf(context).bottom;
     final screenSize = DeviceSize.size;
     final SvgPicture hotdog = Assets.svg.hotdog.svg(width: 150);
 
@@ -80,12 +79,12 @@ class HomePage extends HookConsumerWidget {
           Positioned(
             left: 16,
             right: 16,
-            bottom: safeAreaBottom + 80,
+            bottom: 64,
             child: ActionButton(
               onPressed: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute<HotDogSelectPage>(
-                    builder: (context) => const HotDogSelectPage(),
+                  MaterialPageRoute<void>(
+                    builder: (_) => const DescriptionPage(),
                   ),
                 );
               },
