@@ -1,13 +1,26 @@
 import OpenAI from "https://deno.land/x/openai@v4.24.0/mod.ts";
+import * as Sentry from "https://deno.land/x/sentry@8.36.0/index.mjs";
+
+Sentry.init({
+  dsn: Deno.env.get("SENTRY_DSN"),
+  defaultIntegrations: false,
+  tracesSampleRate: 1.0,
+  sampleRate: 1.0,
+});
+
+// Set region and execution_id as custom tags
+Sentry.setTag("region", Deno.env.get("SB_REGION"));
+Sentry.setTag("execution_id", Deno.env.get("SB_EXECUTION_ID"));
 
 Deno.serve(async (req) => {
-  const { situation, result, centerPercentages } = await req.json();
-  const apiKey = Deno.env.get("OPENAI_API_KEY");
-  const openai = new OpenAI({
-    apiKey: apiKey,
-  });
+  try {
+    const { situation, result, centerPercentages } = await req.json();
+    const apiKey = Deno.env.get("OPENAI_API_KEY");
+    const openai = new OpenAI({
+      apiKey: apiKey,
+    });
 
-  const query = `
+    const query = `
 ホットドッグの持ち方による性格診断をしてください。
 以下のシチュエーションにおける結果から、以下の内容を出力してください。
 
@@ -40,15 +53,28 @@ ${centerPercentages}
 }
 `;
 
-  const chatCompletion = await openai.chat.completions.create({
-    messages: [{ role: "user", content: query }],
-    model: "gpt-4o-mini",
-    stream: false,
-  });
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: query }],
+      model: "gpt-4o-mini",
+      stream: false,
+    });
 
-  const reply = chatCompletion.choices[0].message.content;
+    const reply = chatCompletion.choices[0].message.content;
 
-  return new Response(reply, {
-    headers: { "Content-Type": "text/json" },
-  });
+    return new Response(reply, {
+      headers: { "Content-Type": "text/json" },
+    });
+  } catch (e) {
+    Sentry.captureException(e);
+    if (e instanceof Error) {
+      return new Response(JSON.stringify({ message: e.message }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+    return new Response(JSON.stringify({ message: "unknown error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 });

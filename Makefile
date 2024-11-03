@@ -15,5 +15,5 @@ deploy-functions:
 	supabase functions deploy --no-verify-jwt
 
 .PHONY: deploy-secrets
-deploy-functions-env:
+deploy-secrets:
 	supabase secrets set --env-file ./supabase/.env.local
